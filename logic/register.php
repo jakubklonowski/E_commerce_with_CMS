@@ -10,8 +10,8 @@
     include '../config/config.php';
 
     if ($_POST['password'] === $_POST['password2']) {
-        $password=password_hash($_POST['password']);
-        $query="INSERT INTO clients (Login, Password, Name, Active) VALUES (".$_POST['email'].", ".$password.", ".$_POST['name'].", 0)";
+        $password=password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $query="INSERT INTO `clients` (Email, Password, Name, Active) VALUES (\"".$_POST['email']."\", \"".$password."\", \"".$_POST['name']."\", 0)";
         $result=mysqli_query($link, $query);
         if ($result) {
             header("location:../login.php");
@@ -25,6 +25,4 @@
         $_SESSION['pwd_diff']=true;
         header("location:../register.php");
     }
-   
-
 ?>
