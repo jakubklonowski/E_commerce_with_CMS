@@ -6,6 +6,6 @@
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
 
     session_destroy();
-    header("location:index.php");
+    header("location:../index.php");
     exit;
 ?>

@@ -2,7 +2,7 @@
     <body>
         <?php include './reusable/navbar.php'; ?>
         
-        <section><form action="./logic/login.php" method="POST">
+        <form action="./logic/login.php" method="POST">
             <div id="img-avatar-container">
                 <img src="/static/img_avatar2.png" alt="Avatar" id="img-avatar">
             </div><br>
@@ -18,7 +18,7 @@
             </div><br>
 
             <button type="submit" class="btn btn-primary" id="btn-reg">Sign in</button>
-        </form></section>
+        </form>
 
         <?php 
             if ($_SESSION['wrong_log']) {

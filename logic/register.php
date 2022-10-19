@@ -11,7 +11,7 @@
 
     if ($_POST['password'] === $_POST['password2']) {
         $password=password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $query="INSERT INTO `clients` (Email, Password, Name, Active) VALUES (\"".$_POST['email']."\", \"".$password."\", \"".$_POST['name']."\", 0)";
+        $query="INSERT INTO `clients` (Email, Password, Name) VALUES (\"".$_POST['email']."\", \"".$password."\", \"".$_POST['name']."\")";
         $result=mysqli_query($link, $query);
         if ($result) {
             header("location:../login.php");
