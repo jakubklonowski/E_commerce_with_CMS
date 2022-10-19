@@ -1,6 +1,5 @@
 <?php 
     session_start();
-    $_SESSION['logged_in']=false;
     
     ini_set('display_errors', 1); 
     error_reporting(E_ALL);
