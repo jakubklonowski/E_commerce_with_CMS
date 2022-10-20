@@ -20,28 +20,35 @@
         
         if (isset($_SESSION['ID'])) {
             // orders table - order created
-            $query="INSERT INTO orders (ID_client) VALUES (\"".$_SESSION['ID']."\")";
-            mysqli_query($link, $query);
+            $query=$link->prepare("INSERT INTO orders (ID_client) VALUES (?)");
+            $query->bind_param("i", $_SESSION['ID']);
+            $query->execute();
         }
         else {
             // orders table - order created for unregistered user
-            $query="INSERT INTO orders (ID_client) VALUES (\"005\")";
-            mysqli_query($link, $query);
+            $query=$link->prepare("INSERT INTO orders (ID_client) VALUES (?)");
+            $query->bind_param("i", $x);
+            $x=005;
+            $query->execute();
         }
 
         // get last order (the one just made) number
-        $query="SELECT ID FROM orders WHERE ID_client = 1 ORDER BY ID DESC LIMIT 1";
-        $result = mysqli_query($link, $query);
-        while ($row = mysqli_fetch_assoc($result)) {
+        $query=$link->prepare("SELECT ID FROM orders WHERE ID_client = ? ORDER BY ID DESC LIMIT 1");
+        $query->bind_param("i", $_SESSION['ID']);
+        $query->execute();
+        $result = $query->get_result();
+        while ($row = $result->fetch_assoc()) {
             $ID_order = $row['ID'];
+            echo "->".$ID_order;
         }
 
         // orders_positions - what products are part of order
         $j = 0;
         $quantity = $_SESSION['cart_quantity'];
         foreach ($_SESSION['cart_products'] as $product) {
-            $query="INSERT INTO orders_positions (ID_order, ID_product, Quantity) VALUES ($ID_order, ".$product.", ".$quantity[$j].")";
-            mysqli_query($link, $query);
+            $query=$link->prepare("INSERT INTO orders_positions (ID_order, ID_product, Quantity) VALUES (?, ?, ?)");
+            $query->bind_param("iii", $ID_order, $product, $quantity[$j]);
+            $query->execute();
             $j++;
         }
         

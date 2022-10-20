@@ -7,10 +7,17 @@
             echo '<div class="row">';
                 include './reusable/shop_sidenav.php';
                 echo '<div class="col-md-10 col-sm-12">';
-                    $query = "SELECT * FROM products WHERE Category=\"".$_GET['cat']."\"";
-                    $result = mysqli_query($link, $query);
+                    $query = $link->prepare("SELECT * FROM products WHERE Category=?");
+                    $query->bind_param("s", $_GET['cat']);
+                    $query->execute();
+                    $result = $query->get_result();
 
-                    if (mysqli_num_rows($result) > 0) {
+                    $query2 = $link->prepare("SELECT COUNT(ID) FROM products WHERE Category=?");
+                    $query2->bind_param("s", $_GET['cat']);
+                    $query2->execute();
+                    $result2 = $query2->get_result();
+
+                    if ($result2 > 0) {
                         echo "<div class=\"row\">"; 
                         foreach ($result as $product) {
                             include './reusable/product_card.php';

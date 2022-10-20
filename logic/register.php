@@ -10,9 +10,11 @@
     include '../config/config.php';
 
     if ($_POST['password'] === $_POST['password2']) {
+        $query=$link->prepare("INSERT INTO `clients` (Email, Password, Name) VALUES (?, ?, ?)");
+        $query->bind_param("sss", $_POST['email'], $password, $_POST['name']);
         $password=password_hash($_POST['password'], PASSWORD_DEFAULT);
-        $query="INSERT INTO `clients` (Email, Password, Name) VALUES (\"".$_POST['email']."\", \"".$password."\", \"".$_POST['name']."\")";
-        $result=mysqli_query($link, $query);
+        $query->execute();
+        $result = $query->get_result();
         if ($result) {
             header("location:../login.php");
         }

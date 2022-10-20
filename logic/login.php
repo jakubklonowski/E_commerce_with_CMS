@@ -10,10 +10,18 @@
 
     include '../config/config.php';
 
-    $query="SELECT * FROM `users` WHERE Email=\"".$_POST['email']."\" AND Active=\"1\"";
-    $results=mysqli_query($link, $query);
-    if (mysqli_num_rows($results) == 1) {
-        while ($row = mysqli_fetch_assoc($results)) {
+    $query=$link->prepare("SELECT * FROM `users` WHERE Email= ? AND Active=\"1\"");
+    $query->bind_param("s", $_POST['email']);
+    $query->execute();
+    $result = $query->get_result();
+
+    $query2=$link->prepare("SELECT COUNT(ID) FROM `users` WHERE Email= ? AND Active=\"1\"");
+    $query2->bind_param("s", $_POST['email']);
+    $query2->execute();
+    $results2 = $query2->get_result();
+
+    if ($results2 == 1) {
+        while ($row = $result->fetch_assoc()) {
             $password = $row['Password'];
             $admin = $row['Admin'];
             $_SESSION['ID']=$row['ID'];
