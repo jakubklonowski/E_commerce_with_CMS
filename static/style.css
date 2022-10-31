@@ -1,0 +1,107 @@
+body {
+    background-color: rgb(242, 242, 242);
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.wysrodkowanie {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.wyjustowanie {
+    text-align: justify;
+}
+
+.card-image {
+    object-fit: contain;
+    width: 80%;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.fc-reg {
+    width: 40%;
+    margin-left: 30%;
+    margin-right: 30%;
+}
+
+.label-reg {
+    margin-left: 30%;
+}
+
+.wrong-log-reg {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+}
+
+.cart-item-quan {
+    width: 100px;
+}
+
+.cart-product-form {
+    display: inline;
+}
+
+.btn-del-cart-item {
+    height: 32px;
+    width: 32px;
+}
+
+.recommend-img {
+    height: 64px;
+    object-fit: contain;
+}
+
+#nav-container {
+    position: sticky;
+    top: 0;
+}
+
+#navbar {
+    background-color: rgb(253, 210, 168);
+    padding-top: 16px;
+    padding-bottom: 16px;
+}
+
+#under-nav {
+    background-color: rgb(255, 140, 26);
+    padding-bottom: 4px;
+}
+
+#btn-reg {
+    width: 10%;
+    margin-left: 45%;
+    margin-right: 45%;
+}
+
+#img-avatar-container {
+    text-align: center;
+    margin: 24px 0 12px 0;
+    width: 30%;
+    margin-left: 35%;
+}
+
+#img-avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+#logout-btn {
+    color: white;
+}
+
+#cart-img {
+    height: 20px;
+    object-fit: cover;
+}
+
+#index-banner {
+    width: 100%;
+    object-fit: contain;
+}
