@@ -25,7 +25,7 @@
                     echo "<h1>".$res['Name']."</h1><br>";
                     echo "<img src=\"".$res['Cover']."\"><br>";
                     echo "<p>ID:&nbsp;".$res['ID']."</p><br>";
-                    echo "<input class=\"display-none\" type=\"number\" name=\"ID\" value=\"".$res['ID']."\">";
+                    echo "<input type=\"number\" name=\"ID\" value=\"".$res['ID']."\" hidden>";
                     echo "<input type=\"number\" name=\"quantity\" min=\"1\" value=\"1\">&nbsp;<button type=\"submit\" class=\"btn btn-primary\">Add to cart</button><br>";
                     echo "<p>".$res['DescriptionLong']."</p>";
                 echo "</form>";

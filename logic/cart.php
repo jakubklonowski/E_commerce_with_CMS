@@ -28,7 +28,7 @@
             // orders table - order created for unregistered user
             $query=$link->prepare("INSERT INTO orders (ID_client) VALUES (?)");
             $query->bind_param("i", $x);
-            $x=005;
+            $x=005; // id of user created for not logged users
             $query->execute();
         }
 

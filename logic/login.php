@@ -1,12 +1,13 @@
 <?php
     session_start();
-    $_SESSION['logged_in']=false;
-    $_SESSION['admin']=false;
-    $_SESSION['wrong_log']=false;
     
     ini_set('display_errors',1); 
     error_reporting(E_ALL);
     mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+
+    $_SESSION['logged_in']=false;
+    $_SESSION['admin']=false;
+    $_SESSION['wrong_log']=false;
 
     include '../config/config.php';
 
